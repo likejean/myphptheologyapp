@@ -1,5 +1,3 @@
-
-
 <ul class="nav nav-pills my-2 justify-content-end">
     <?php
         if(!isset($_SESSION['username'])){

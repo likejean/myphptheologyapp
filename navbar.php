@@ -12,7 +12,7 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
+                    <a class="nav-link" href="theology.php">Theology</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About me</a>

@@ -1,0 +1,42 @@
+CREATE TABLE BibleInterpretations (
+  BibleInterpretationId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  BibleInterpretationHeader VARCHAR(255) NOT NULL,
+  BibleInterpretationDescription VARCHAR(10000) NOT NULL,
+  BibleInterpretationDateCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  BibleInterpretationDateUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  TheologyTopicId INT NOT NULL,
+  AuthorId INT NOT NULL,
+  CONSTRAINT FK_Interpretation_Theology FOREIGN KEY (TheologyTopicId)     
+    REFERENCES theologytopics (TheologyTopicId),
+  CONSTRAINT FK_Interpretation_User FOREIGN KEY (AuthorId)     
+    REFERENCES users (userId)
+);
+
+
+CREATE TABLE UserFavorites (
+  UserFavoriteId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  UserFavoriteDateCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  BibleInterpretationId INT NOT NULL,
+  AuthorId INT NOT NULL,
+  CONSTRAINT FK_Favorite_Interpretation FOREIGN KEY (BibleInterpretationId)     
+    REFERENCES bibleinterpretations (BibleInterpretationId),
+  CONSTRAINT FK_Favorite_User FOREIGN KEY (AuthorId)     
+    REFERENCES users (userId),
+  CONSTRAINT UC_AuthorId UNIQUE (AuthroId)
+);
+
+CREATE TABLE BibleContext (
+  BibleContextId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  BibleContext VARCHAR(255) NOT NULL,
+  BibleContextBook VARCHAR(255) NOT NULL,
+  BibleContextChapter VARCHAR(16) NOT NULL,
+  BibleContextVerse VARCHAR(16) NOT NULL,
+  BibleContextDateAdded TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  BibleContextDateUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  BibleInterpretationId INT NOT NULL,
+  AuthorId INT NOT NULL,
+  CONSTRAINT FK_BibleContext_Interpretation FOREIGN KEY (BibleInterpretationId)     
+    REFERENCES bibleinterpretations (BibleInterpretationId),
+  CONSTRAINT FK_BibleContext_User FOREIGN KEY (AuthorId)     
+    REFERENCES users (userId)
+);
