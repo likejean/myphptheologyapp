@@ -49,7 +49,6 @@
                     <a href="https://www.linkedin.com/in/sergey-popach-5b9a18155/" target="_blank"> <i class="fab fa-linkedin fa-2x margin"></i></a>
 
                 </div>
-
             </div>
         </div>
     </div>

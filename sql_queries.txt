@@ -1,3 +1,15 @@
+CREATE TABLE TheologyTopics (
+  TheologyTopicId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  TheologyTopicTitle VARCHAR(255) NOT NULL,
+  TheologyTopicDateCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  TheologyTopicDateUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  AuthorId INT NOT NULL,
+  CONSTRAINT FK_Theology_User FOREIGN KEY (AuthorId)     
+    REFERENCES users (userId)
+);
+
+
+
 CREATE TABLE BibleInterpretations (
   BibleInterpretationId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   BibleInterpretationHeader VARCHAR(255) NOT NULL,
@@ -22,7 +34,7 @@ CREATE TABLE UserFavorites (
     REFERENCES bibleinterpretations (BibleInterpretationId),
   CONSTRAINT FK_Favorite_User FOREIGN KEY (AuthorId)     
     REFERENCES users (userId),
-  CONSTRAINT UC_AuthorId UNIQUE (AuthroId)
+  CONSTRAINT UC_AuthorId UNIQUE (AuthorId)
 );
 
 CREATE TABLE BibleContext (

@@ -30,7 +30,7 @@ if(isset($_POST['login-submit'])){
                     session_start();
                     $_SESSION['firstname'] = $row['firstname'];
                     $_SESSION['lastname'] = $row['lastname'];
-                    $_SESSION['userId'] = $row['id'];
+                    $_SESSION['userId'] = $row['userId'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['role'] = $row['role'];
