@@ -1,7 +1,9 @@
 
 <?php
     require './header.php';
-    require './includes/errors.inc.php';
+    echo '<div class="row d-flex justify-content-center my-2 text-muted">';
+        require './includes/errors.inc.php';
+    echo '</div>';
     require './database/dbh.inc.php';
     require './includes/theologytopics.php';
     require './createtopic.php';

@@ -101,7 +101,7 @@
     function fetchTheologyTopics($theologyTopicId, $title, $count)
     {
         echo '    
-                <div class="row mx-5 my-2 justify-content-center">
+                <div class="row mx-5 my-5 justify-content-center">
                     <div class="tabs">
                         <div class="tab">
                             <input class="tab-input" type="checkbox" id="chck' . $theologyTopicId . '">
