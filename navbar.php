@@ -9,16 +9,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php" style="font-size: 25px;">Home</a>
+                    <a class="nav-link" href="index.php" style="font-size: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="theology.php" style="font-size: 25px;">Theology</a>
+                    <a class="nav-link" href="theology.php" style="font-size: 20px;">Theology</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 25px;">About me</a>
+                    <a class="nav-link" href="#" style="font-size: 20px;">About me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 25px;">Contact</a>
+                    <a class="nav-link" href="#" style="font-size: 20px;">Contact</a>
                 </li>
             </ul>
         </div>
