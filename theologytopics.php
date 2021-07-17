@@ -61,7 +61,7 @@ function fetchBibleInterpretations($id)
             $count = 1;
             echo '<h5 class="card-subtitle d-flex justify-content-center my-3 text-muted">
                     <span class="badge badge-light d-flex align-items-center mx-2"> Interpretations: ' . mysqli_num_rows($result) . '</span>
-                    <span class="badge badge-light d-flex justify-content-center"><i class="fa fa-plus p-1"></i></span>
+                    <span style="cursor: pointer;" data-toggle="modal" data-target="#create-interpretation-modal" class="badge badge-light d-flex justify-content-center"><i class="fa fa-plus p-1"></i></span>
                </h5>';
 
             while ($row = mysqli_fetch_array($result)) {

@@ -5,9 +5,10 @@
         require './includes/errors.inc.php';
     echo '</div>';
     require './database/dbh.inc.php';
-    require './includes/theologytopics.php';
+    require './theologytopics.php';
     require './createtopic.php';
     require './deletetopic.php';
+    require './createinterpretation.php';
 
 $sql = "SELECT * FROM theologytopics";
     if ($result = mysqli_query($conn, $sql)) {
