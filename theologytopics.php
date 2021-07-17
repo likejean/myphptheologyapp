@@ -51,17 +51,21 @@ function fetchAuthorName($id)
 }
 
 
-function fetchBibleInterpretations($id)
+function fetchBibleInterpretations($id, $title)
 {
     require './database/dbh.inc.php';
     $sql = "SELECT * FROM bibleinterpretations WHERE TheologyTopicId = $id";
+
+    $title = str_replace(array(' '), '_', $title);
 
     if ($result = mysqli_query($conn, $sql)) {
         if (mysqli_num_rows($result) > 0) {
             $count = 1;
             echo '<h5 class="card-subtitle d-flex justify-content-center my-3 text-muted">
                     <span class="badge badge-light d-flex align-items-center mx-2"> Interpretations: ' . mysqli_num_rows($result) . '</span>
-                    <span style="cursor: pointer;" data-toggle="modal" data-target="#create-interpretation-modal" class="badge badge-light d-flex justify-content-center"><i class="fa fa-plus p-1"></i></span>
+                    <span id="#create-interpretation-button" style="cursor: pointer;" data-toggle="modal" data-target="#create-interpretation-modal" class="badge badge-light d-flex justify-content-center">
+                        <i data-topic-title=' . $title . ' data-topic-id=' . $id . ' class="fa fa-plus p-1"></i>
+                    </span>
                </h5>';
 
             while ($row = mysqli_fetch_array($result)) {
@@ -96,6 +100,11 @@ function fetchBibleInterpretations($id)
             }
             mysqli_free_result($result);
         } else {
+            echo '<h5 class="card-subtitle d-flex justify-content-center my-3 text-muted">
+                    <span id="#create-interpretation-button" style="cursor: pointer;" data-toggle="modal" data-target="#create-interpretation-modal" class="badge badge-light d-flex justify-content-center">
+                        <i data-topic-title=' . $title . ' data-topic-id=' . $id . ' class="fa fa-plus p-1"></i>
+                    </span>
+               </h5>';
             echo '<div style="display: flex"><span class="badge badge-light" style="color: lightcoral; font-style: italic; width: 100rem;"><h6>No interpretations were added to this topic yet.</h6></span></div>';
         }
     } else {
@@ -105,7 +114,6 @@ function fetchBibleInterpretations($id)
 
 function fetchTheologyTopics($theologyTopicId, $title, $count)
 {
-
     echo '
                 <div class="row mx-5 my-5 justify-content-center">
                     <div class="tabs">                       
@@ -115,7 +123,7 @@ function fetchTheologyTopics($theologyTopicId, $title, $count)
                                 <a onClick="clickHandler('. $theologyTopicId . ');" id="delete-topic-icon" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: auto; cursor: pointer; padding: 2px 25px; font-size: 21px;"><i id="delete-topic-icon" class="fa fa-trash"></i></a>
                                                         </label>';
 
-                            echo fetchBibleInterpretations($theologyTopicId);
+                            echo fetchBibleInterpretations($theologyTopicId, $title);
                             echo '<div id="delete-topic-modal"></div>';
                             echo '</div>
                         </div>

@@ -56,10 +56,16 @@ $sql = "SELECT * FROM theologytopics";
                 crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script>
+            $('span[data-toggle=modal]').click(function(e) {
+                let bibleTopicId = $(e.target).data('topic-id');
+                let bibleTopicTitle = $(e.target).data('topic-title');
+                let input = $("<input>").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
+                $('.create-interpretation').append(input);
+                $('#topic-title').text(bibleTopicTitle.replace(/_/g, ' '));
+            });
+        </script>
         </body>
-
-
-
     </html>
 
 
