@@ -57,12 +57,23 @@ $sql = "SELECT * FROM theologytopics";
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script>
-            $('span[data-toggle=modal]').click(function(e) {
+            $('span.create-interpretation-button').click(function(e) {
                 let bibleTopicId = $(e.target).data('topic-id');
                 let bibleTopicTitle = $(e.target).data('topic-title');
+                console.log(bibleTopicId, bibleTopicTitle);
                 let input = $("<input>").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
                 $('.create-interpretation').append(input);
                 $('#topic-title').text(bibleTopicTitle.replace(/_/g, ' '));
+            });
+
+            $('span.delete-topic-button').click(function(e) {
+                let bibleTopicId = $(e.target).data('topic-id');
+                let input = $("<input>").attr("class", "bible-topic-id").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
+                $('.delete-topic').append(input);
+            });
+
+            $('#delete-topic-modal-close-button').click(function() {
+                $("input.bible-topic-id").remove();
             });
         </script>
         </body>

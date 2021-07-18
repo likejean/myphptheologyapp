@@ -1,20 +1,22 @@
 
 <?php
 
+if(isset($_POST['delete-topic-submit'])) {
+
     require '../database/dbh.inc.php';
     require '../includes/errors.inc.php';
-//
-    if(isset($_GET['theologyId'])){
-        $theologyTopicId = $_GET['theologyId'];
-    }else{
+
+    if (isset($_POST['theology-topic-id'])) {
+        $theologyTopicId = $_POST['theology-topic-id'];
+    } else {
         header("Location: ../theology.php?delete=failed");
         exit();
     }
 
-    if(empty($theologyTopicId)){
+    if (empty($theologyTopicId)) {
         header("Location: ../theology.php?error=missingid");
         exit();
-    }else {
+    } else {
         $sql = "DELETE FROM theologytopics WHERE (TheologyTopicId = ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -27,4 +29,5 @@
             $conn->close();
         }
     }
+}
 
