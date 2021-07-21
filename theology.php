@@ -60,20 +60,25 @@ $sql = "SELECT * FROM theologytopics";
             $('span.create-interpretation-button').click(function(e) {
                 let bibleTopicId = $(e.target).data('topic-id');
                 let bibleTopicTitle = $(e.target).data('topic-title');
-                console.log(bibleTopicId, bibleTopicTitle);
-                let input = $("<input>").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
+                let input = $("<input>").attr("class", "bible-interpretation-id").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
                 $('.create-interpretation').append(input);
                 $('#topic-title').text(bibleTopicTitle.replace(/_/g, ' '));
             });
 
+            $('#create-interpretation-modal-close-button').click(function() {
+                $("input.bible-interpretation-id").remove();
+            });
+
+            ////////////////////
+
             $('span.delete-topic-button').click(function(e) {
                 let bibleTopicId = $(e.target).data('topic-id');
-                let input = $("<input>").attr("class", "bible-topic-id").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
+                let input = $("<input>").attr("class", "theology-topic-id").attr("type", "hidden").attr("name", "theology-topic-id").val(bibleTopicId);
                 $('.delete-topic').append(input);
             });
 
             $('#delete-topic-modal-close-button').click(function() {
-                $("input.bible-topic-id").remove();
+                $("input.theology-topic-id").remove();
             });
         </script>
         </body>

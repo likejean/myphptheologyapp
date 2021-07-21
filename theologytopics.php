@@ -1,7 +1,11 @@
 <!-- USEFUL LINKS: https://database.guide/create-a-relationship-in-sql/-->
+
+<script>
+    function clickHeartIconHandler(id){
+        window.location.href = "./includes/updateuserlikes.inc.php?bible-interpretation-id=" + id;
+    }
+</script>
 <?php
-
-
 function fetchUserLikes($id)
 {
     require './database/dbh.inc.php';
@@ -22,10 +26,10 @@ function fetchUserLikes($id)
     }
 }
 
-function renderHeartIconFill($count)
+function renderHeartIconFill($count, $bibleInterpretationId)
 {
-    if ($count == 0) return '<i class="fa fa-heart-o" style="cursor: pointer; font-size: 15px; padding-right: 8px; color: #FF0000;"></i>' . $count;
-    else return '<i class="fa fa-heart" style="cursor: pointer; font-size: 15px; padding: 0px 5px; color: #FF0000;"></i>' . $count;
+    if ($count == 0) return '<i onclick="clickHeartIconHandler(' . $bibleInterpretationId . ');" class="fa fa-heart-o" style="cursor: pointer; font-size: 15px; padding-right: 8px; color: #FF0000;"></i>' . $count;
+    else return '<i onclick="clickHeartIconHandler(' . $bibleInterpretationId . ');" class="fa fa-heart" style="cursor: pointer; font-size: 15px; padding: 0px 5px; color: #FF0000;"></i>' . $count;
 }
 
 function fetchAuthorName($id)
@@ -82,7 +86,7 @@ function fetchBibleInterpretations($id, $title)
                                     </span> 
                                     <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">                               
                                     ';
-                echo renderHeartIconFill($likes);
+                echo renderHeartIconFill($likes, $bibleInterpretationId);
                 echo '</span>
                                 </span>
                                 <div class="card">
