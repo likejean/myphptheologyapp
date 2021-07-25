@@ -89,18 +89,19 @@ function fetchBibleInterpretations($id, $title)
                                     ';
                 echo renderHeartIconFill($likes, $bibleInterpretationId);
                 echo '</span>                                   
-                            </span>
-                            <div class="d-flex justify-content-center">
-                                <span class="delete-interpretation-button" data-toggle="modal" data-target="#delete-interpretation-modal" type="button" interpretationId='. $bibleInterpretationId . ' data-toggle="modal" style="margin: 20px 20px; cursor: pointer; font-size: 21px;">
-                                    <i data-interpretation-id=' . $bibleInterpretationId . ' class="fa fa-trash"></i>
-                                </span>
-                            </div>                            
-                            <div class="card">
-                                <h5 class="card-title mt-4 d-flex justify-content-center">' . $header . '</h5>                                
-                                <div class="card-body">' . $text . '</div>
-                            </div>
-                        </div>
-                        ';
+                            </span>';
+                if(isset($_SESSION['userId']) && $_SESSION['userId'] != '') {
+                    echo '<div class="d-flex justify-content-center">
+                        <span class="delete-interpretation-button" data-toggle="modal" data-target="#delete-interpretation-modal" type="button" interpretationId=' . $bibleInterpretationId . ' data-toggle="modal" style="margin: 20px 20px; cursor: pointer; font-size: 21px;">
+                            <i data-interpretation-id=' . $bibleInterpretationId . ' class="fa fa-trash"></i>
+                        </span>
+                    </div>';
+                }
+                echo '<div class="card">
+                        <h5 class="card-title mt-4 d-flex justify-content-center">' . $header . '</h5>                                
+                        <div class="card-body">' . $text . '</div>
+                    </div>
+                </div>';
                 $count = $count + 1;
             }
             mysqli_free_result($result);
@@ -120,22 +121,24 @@ function fetchBibleInterpretations($id, $title)
 function fetchTheologyTopics($theologyTopicId, $title, $count)
 {
     echo '
-                <div class="row mx-5 my-5 justify-content-center">
-                    <div class="tabs">                       
-                        <div class="tab">
-                                <input class="tab-input" type="checkbox" id="chck' . $theologyTopicId . '">
-                                <label class="tab-label" for="chck' . $theologyTopicId . '">' . $count . '. ' . $title . '
-                                    <span class="delete-topic-button" data-toggle="modal" data-target="#delete-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: auto; cursor: pointer; padding: 2px 25px; font-size: 21px;">
-                                        <i data-topic-id=' . $theologyTopicId . ' class="fa fa-trash"></i>
-                                    </span>
-                                </label>';
-                            echo fetchBibleInterpretations($theologyTopicId, $title);
-                            echo '<div id="delete-topic-modal"></div>';
-                            echo '</div>
-                        </div>
-                    </div>
-                </div>        
-            ';
+        <div class="row mx-5 my-5 justify-content-center">
+            <div class="tabs">                       
+                <div class="tab">
+                        <input class="tab-input" type="checkbox" id="chck' . $theologyTopicId . '">';
+                    echo '<label class="tab-label" for="chck' . $theologyTopicId . '"><span>' . $count . '. ' . $title . '</span>';
+                        if(isset($_SESSION['userId']) && $_SESSION['userId'] != ''){
+                            echo '<span class="delete-topic-button" data-toggle="modal" data-target="#delete-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: auto; cursor: pointer; padding: 2px 25px; font-size: 21px;">
+                                <i data-topic-id=' . $theologyTopicId . ' class="fa fa-trash"></i>
+                            </span>';
+                        }
+                    echo '</label>';
+                    echo fetchBibleInterpretations($theologyTopicId, $title);
+                    echo '<div id="delete-topic-modal"></div>';
+                    echo '</div>
+                </div>
+            </div>
+        </div>        
+    ';
 }
 
 ?>
