@@ -25,7 +25,7 @@
         $("input.theology-topic-id").remove();
     });
 
-    ////////////////////DELETE INTERPRETATION TOPIC/////////////////////////////////////
+    ////////////////////DELETE BIBLE INTERPRETATION/////////////////////////////////////
 
     $('span.delete-interpretation-button').click(function(e) {
         let bibleInterpretationId = $(e.target).data('interpretation-id');
