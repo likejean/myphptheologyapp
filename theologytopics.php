@@ -84,16 +84,23 @@ function fetchBibleInterpretations($id, $title)
                                         <i class="fa fa-calendar" style="font-size: 15px; padding: 5px;"></i> 
                                         ' . $date . '
                                     </span> 
-                                    <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">                               
+                                    <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">  
+                                                                
                                     ';
                 echo renderHeartIconFill($likes, $bibleInterpretationId);
-                echo '</span>
+                echo '</span>                                   
+                            </span>
+                            <div class="d-flex justify-content-center">
+                                <span class="delete-interpretation-button" data-toggle="modal" data-target="#delete-interpretation-modal" type="button" interpretationId='. $bibleInterpretationId . ' data-toggle="modal" style="margin: 20px 20px; cursor: pointer; font-size: 21px;">
+                                    <i data-interpretation-id=' . $bibleInterpretationId . ' class="fa fa-trash"></i>
                                 </span>
-                                <div class="card">
-                                    <h5 class="card-title mt-4 d-flex justify-content-center">' . $header . '</h5>                                
-                                    <div class="card-body">' . $text . '</div>
+                            </div>                            
+                            <div class="card">
+                                <h5 class="card-title mt-4 d-flex justify-content-center">' . $header . '</h5>                                
+                                <div class="card-body">' . $text . '</div>
                             </div>
-                        </div>';
+                        </div>
+                        ';
                 $count = $count + 1;
             }
             mysqli_free_result($result);

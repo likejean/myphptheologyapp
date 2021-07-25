@@ -4,7 +4,7 @@
                 <div class="modal-body container-fluid">
                     <form class="delete-topic" action="includes/deletetopic.inc.php" method="post">
                         <div class="mb-3">
-                            <p class="row d-flex justify-content-center">Are you sure you want to delete this item?</p>
+                            <p class="row d-flex justify-content-center">Are you sure you want to delete this theology topic?</p>
                         </div>
                         <div class="mb-3 d-flex justify-content-center">
                             <button type="submit" id="delete-topic-submit" name="delete-topic-submit" value="delete-topic-submit" class="btn btn-primary row">Delete</button>
