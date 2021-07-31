@@ -88,8 +88,7 @@ function fetchBibleInterpretations($id, $title)
                                                     
                         ';
                 echo renderHeartIconFill($likes, $bibleInterpretationId);
-                echo '</span>                                   
-                            </span>';
+                echo '</span></span>';
                 if(isset($_SESSION['userId']) && $_SESSION['userId'] != '') {
                     echo '<div class="d-flex justify-content-center">
                         <span class="delete-interpretation-button" data-toggle="modal" data-target="#delete-interpretation-modal" type="button" interpretationId=' . $bibleInterpretationId . ' data-toggle="modal" style="margin: 20px 20px; cursor: pointer; font-size: 21px;">
@@ -119,6 +118,7 @@ function fetchBibleInterpretations($id, $title)
 }
 
 function fetchTheologyTopics($theologyTopicId, $title, $count)
+
 {
     echo '
         <div class="row mx-5 my-5 justify-content-center">
@@ -131,7 +131,7 @@ function fetchTheologyTopics($theologyTopicId, $title, $count)
                                 <i data-topic-id=' . $theologyTopicId . ' class="fa fa-trash"></i>
                             </span>';
                             echo '<span class="edit-topic-button" data-toggle="modal" data-target="#edit-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: 5px; margin-right: 15px; cursor: pointer; padding: 2px 5px; font-size: 21px;">
-                                <i data-topic-id=' . $theologyTopicId . ' class="fa fa-pencil"></i>
+                                <i data-topic-title= ' . str_replace(array(' '), '_', $title) . ' data-topic-id=' . $theologyTopicId . ' class="fa fa-pencil"></i>
                             </span>';
                         }
                     echo '</label>';

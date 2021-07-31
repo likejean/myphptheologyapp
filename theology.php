@@ -8,6 +8,7 @@
     require './theologytopics.php';
     require './createtopic.php';
     require './deletetopic.php';
+    require './edittopic.php';
     require './createinterpretation.php';
     require './deleteinterpretation.php';
 
@@ -56,7 +57,7 @@ $sql = "SELECT * FROM theologytopics";
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <?php
             require './js/jquery.php';
         ?>
