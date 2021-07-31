@@ -5,6 +5,7 @@
         window.location.href = "./includes/updateuserlikes.inc.php?bible-interpretation-id=" + id;
     }
 </script>
+
 <?php
 function fetchUserLikes($id)
 {
@@ -73,20 +74,19 @@ function fetchBibleInterpretations($id, $title)
                 $author = $row["AuthorId"];
                 $date = $row["BibleInterpretationDateCreated"];
                 $likes = fetchUserLikes($bibleInterpretationId);
-                echo '<div class="tab-content">
-                               
-                                <span class="badge badge-secondary d-flex justify-content-center mb-2 p-1 text-muted"> 
-                                    <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">
-                                        <i class="fa fa-user" style="font-size: 15px; padding: 5px;"></i> 
-                                        ' . fetchAuthorName($author)["firstname"] . ' ' . fetchAuthorName($author)["lastname"] . '
-                                    </span>
-                                    <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">
-                                        <i class="fa fa-calendar" style="font-size: 15px; padding: 5px;"></i> 
-                                        ' . $date . '
-                                    </span> 
-                                    <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">  
-                                                                
-                                    ';
+                echo '<div class="tab-content">                   
+                    <span class="badge badge-secondary d-flex justify-content-center mb-2 p-1 text-muted"> 
+                        <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">
+                            <i class="fa fa-user" style="font-size: 15px; padding: 5px;"></i> 
+                            ' . fetchAuthorName($author)["firstname"] . ' ' . fetchAuthorName($author)["lastname"] . '
+                        </span>
+                        <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">
+                            <i class="fa fa-calendar" style="font-size: 15px; padding: 5px;"></i> 
+                            ' . $date . '
+                        </span> 
+                        <span class="badge badge-light d-flex align-items-center pr-2 mx-2" style="font-size: 15px;">  
+                                                    
+                        ';
                 echo renderHeartIconFill($likes, $bibleInterpretationId);
                 echo '</span>                                   
                             </span>';
@@ -127,8 +127,11 @@ function fetchTheologyTopics($theologyTopicId, $title, $count)
                         <input class="tab-input" type="checkbox" id="chck' . $theologyTopicId . '">';
                     echo '<label class="tab-label" for="chck' . $theologyTopicId . '"><span>' . $count . '. ' . $title . '</span>';
                         if(isset($_SESSION['userId']) && $_SESSION['userId'] != ''){
-                            echo '<span class="delete-topic-button" data-toggle="modal" data-target="#delete-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: auto; cursor: pointer; padding: 2px 25px; font-size: 21px;">
+                            echo '<span class="delete-topic-button" data-toggle="modal" data-target="#delete-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: auto; cursor: pointer; padding: 2px 5px; font-size: 21px;">
                                 <i data-topic-id=' . $theologyTopicId . ' class="fa fa-trash"></i>
+                            </span>';
+                            echo '<span class="edit-topic-button" data-toggle="modal" data-target="#edit-topic-modal" type="button" theologyId='. $theologyTopicId . ' data-toggle="modal" style="margin-left: 5px; margin-right: 15px; cursor: pointer; padding: 2px 5px; font-size: 21px;">
+                                <i data-topic-id=' . $theologyTopicId . ' class="fa fa-pencil"></i>
                             </span>';
                         }
                     echo '</label>';
