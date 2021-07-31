@@ -2,7 +2,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body container-fluid">
-                    <form class="edit-topic" action="" method="post">
+                    <form class="edit-topic" action="includes/edittopic.inc.php" method="post">
                         <div class="mb-3">
                             <label for="theology-topic" class="form-label">Edit Theology Topic</label>
                         </div>
